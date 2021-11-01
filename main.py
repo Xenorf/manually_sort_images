@@ -32,9 +32,12 @@ def imageProcessing(preview_size = 900):
 
         cv2.imshow('image', resized_image)
         key=0
-        while chr(key) not in key_set :
+        while chr(key) not in key_set and chr(key)!='q' :
             key = cv2.waitKey(0) & 0xFF
             print(chr(key))
+        if chr(key) == 'q':
+            print("program interrupted with the following key : "+chr(key))
+            return
         print("moved in "+key_set[chr(key)])
         os.replace(src_directory+"/src/"+filename, src_directory+"/"+key_set[chr(key)]+"/"+filename)
 
